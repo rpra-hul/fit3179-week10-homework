@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>FIT3179 Data Visualisation Semester 2, 2024</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+</head>
+<body>
+    <h1>FIT3179 Data Visualisation Semester 2, 2024</h1>
+    <h2>Week 10 Homework</h2>
+    <p>
+        Name: Rahul P. Rajendran<br/>
+        Student ID: 32912617<br/>
+        Studio: 7, Friday 2p.m.<br/>
+        Date: 22th September 2024
+    </p>
+    
+    <div id="map_chart">
+        <script>
+            var vg_1 = "js/map_chart.vg.json";
+            vegaEmbed("#map_chart", vg_1).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+        </script>
+    </div>
+
+    <div id="bar_chart">
+        <script>
+            var vg_2 = "js/bar_chart.vg.json";
+            vegaEmbed("#bar_chart", vg_2).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+            }).catch(console.error);
+        </script>
+    </div>
+</body>
+</html>

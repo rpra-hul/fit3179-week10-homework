@@ -1,0 +1,108 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Area of Permanent Forest Reserves in Malaysia by State (2003 - 2021)",
+    "width": 800,
+    "height": 600,
+    "data": {
+        "url": "forest_reserve_state.csv"
+    },
+    "params":[
+        {
+            "name": "Select_Year",
+            "value": 2003,
+            "bind": {
+                "input": "range",
+                "min": 2003,
+                "max": 2021,
+                "step": 1,
+                "name": "Year: "
+            }
+        }
+    ],
+    "transform": [
+        {"filter": "datum.area > 0"},
+        {
+            "calculate": "year(datum.date)",
+            "as": "year"
+        },
+        {
+            "filter": "year(datum.date) == Select_Year"
+        }
+    ],
+    "layer": [
+        {
+            "mark": "bar",
+            "encoding": {
+                "x": {
+                    "field": "state",
+                    "type": "nominal",
+                    "axis": {
+                        "title": "State"
+                    }
+                },
+                "y": {
+                    "field": "area",
+                    "type": "quantitative",
+                    "axis": {
+                        "title": "Area (Hectares)"
+                    },
+                    "scale":{
+                        "type": "log",
+                        "domain": [1, 5000000]
+                    }
+                },
+                "color": {
+                    "condition": {
+                        "test": "datum.area > 1000000",
+                        "value": "steelblue"
+                    },
+                    "value": "grey"
+                },
+                "tooltip": [
+                    {"field": "state", "type": "nominal", "title": "State"},
+                    {"field": "area", "type": "quantitative", "title": "Area (Hectares)"}
+                ]
+            }
+            
+        },
+        {
+            "mark": {
+                "type": "text",
+                "align": "center",
+                "baseline": "middle",
+                "dy": -5,
+                "fontSize": 11.5,
+                "fontStyle": "italic",
+                "fontWeight": "bold"
+            },
+            "encoding": {
+                "text": {
+                    "field": "state",
+                    "type": "nominal"
+                },
+                "x": {
+                    "field": "state",
+                    "type": "nominal"
+                },
+                "y": {
+                    "field": "area",
+                    "type": "quantitative"
+                },
+                "color" :{
+                    "value": "black"
+                },
+                "opacity":{
+                    "condition": {
+                        "test": "datum.area > 1000000",
+                        "value": 1
+                    },
+                    "value": 0
+                },
+                "tooltip": [
+                    {"field": "state", "type": "nominal", "title": "State"},
+                    {"field": "area", "type": "quantitative", "title": "Area (Hectares)"}
+                ]
+            }
+        }
+    ]
+}

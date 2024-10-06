@@ -1,0 +1,52 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Area of Permanent Forest Reserves in Malaysia by State in 2021",
+    "width": 800,
+    "height": 600,
+    "projection": {
+      "type": "equalEarth"
+    },
+    "data": {
+      "url": "gadm41_MYS_1.json",
+      "format": {
+        "type": "topojson",
+        "feature": "gadm41_MYS_1"
+      }
+    },
+    "transform": [
+      {
+        "lookup": "properties.NAME_1",
+        "from": {
+          "data": {
+            "url": "forest_reserve_state_simplified.csv"
+          },
+          "key": "state",
+          "fields": ["area"]
+        }
+      }
+    ],
+    "mark": {
+      "type": "geoshape",
+      "stroke": "#333",
+      "strokeWidth": 1.0
+    },
+    "encoding": {
+      "color": {
+        "field": "area",
+        "type": "quantitative",
+        "scale":  { 
+            "type": "threshold", 
+            "domain": [0, 100000, 500000, 1000000, 2000000, 3000000, 4000000], 
+            "range": ["#f0f9e8", "#ccebc5", "#a8ddb5", "#7bccc4", "#4eb3d3", "#2b8cbe", "#08589e"]
+        },
+        "legend": {
+          "title": "Area (Hectares)",
+          "orient": "bottom-right"
+        }
+      },
+      "tooltip": [
+        {"field": "properties.NAME_1", "type": "nominal", "title": "State"},
+        {"field": "area", "type": "quantitative", "title": "Area (Hectares)"}
+      ]
+    }
+}
