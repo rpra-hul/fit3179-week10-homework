@@ -7,7 +7,7 @@
       "type": "equalEarth"
     },
     "data": {
-      "url": "gadm41_MYS_1.json",
+      "url": "https://raw.githubusercontent.com/rpra-hul/fit3179-week10-homework/refs/heads/master/js/gadm41_MYS_1.json",
       "format": {
         "type": "topojson",
         "feature": "gadm41_MYS_1"
@@ -18,7 +18,7 @@
         "lookup": "properties.NAME_1",
         "from": {
           "data": {
-            "url": "forest_reserve_state_simplified.csv"
+            "url": "https://raw.githubusercontent.com/rpra-hul/fit3179-week10-homework/refs/heads/master/data/forest_reserve_state_simplified.csv"
           },
           "key": "state",
           "fields": ["area"]

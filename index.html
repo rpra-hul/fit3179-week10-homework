@@ -17,7 +17,12 @@
         Studio: 7, Friday 2p.m.<br/>
         Date: 22th September 2024
     </p>
-    
+
+    <p>
+        Note to marker: I realised while working on this homework, 
+        that the "bar" mark does not support the log scale property in Vega-Lite.
+        As such, I had to use the "linear" scale for the y-axis in the bar chart.
+    </p>    
     <div id="map_chart">
         <script>
             var vg_1 = "js/map_chart.vg.json";
@@ -29,7 +34,7 @@
 
     <div id="bar_chart">
         <script>
-            var vg_2 = "js/bar_chart.vg.json";
+            var vg_2 = "js/bar_chart_interactive.vg.json";  
             vegaEmbed("#bar_chart", vg_2).then(function(result) {
             // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
             }).catch(console.error);
